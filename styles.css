@@ -7,9 +7,11 @@
 
 :root {
     --bg-color: #fff;
-    --text-color: #991b1b;
+    --text-color: #333;
     --primary-red: #991b1b;
     --accent-red: #b91c1c;
+    --accent-gold: #d97706; /* Third color for buttons */
+    --accent-gold-hover: #b45309; /* Darker gold for hover */
     --gray-light: #f5f5f5;
     --gray-medium: #666;
     --gray-dark: #333;
@@ -20,29 +22,10 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--gray-dark);
-    background: #fff;
+    background: var(--bg-color);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Simplified background texture */
-    background-image: 
-        linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
-    background-attachment: fixed;
-}
-
-/* Add a separate background element that won't interfere with overlays */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        radial-gradient(circle at 20% 80%, rgba(153, 27, 27, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(153, 27, 27, 0.03) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 1;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -102,10 +85,9 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
+    background: var(--primary-red);
     z-index: 1000;
-    padding: 20px 0;
+    padding: 15px 0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -119,22 +101,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-red);
+    height: 50px;
     display: flex;
     align-items: center;
 }
 
 .nav-logo img {
-    height: 60px;
+    height: 100%;
     width: auto;
-    display: block;
+    object-fit: contain;
 }
 
 /* Menu Button */
 .menu-button {
-    background: var(--primary-red);
+    background: var(--accent-gold);
     color: #fff;
     padding: 10px 30px;
     border-radius: 30px;
@@ -142,12 +122,12 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.3s ease;
     text-align: center;
     position: relative;
-    z-index: 1001;
 }
 
 .menu-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(153, 27, 27, 0.3);
+    background: var(--accent-gold-hover);
+    box-shadow: 0 5px 20px rgba(217, 119, 6, 0.3);
 }
 
 .menu-text {
@@ -171,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
 }
 
-/* Menu Overlay - Ensure it's absolutely on top */
+/* Menu Overlay */
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -186,10 +166,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    z-index: 99999;
-    /* Ensure it creates its own stacking context */
-    transform: translateZ(0);
-    will-change: opacity, visibility;
+    z-index: 2000;
 }
 
 .menu-overlay.active {
@@ -205,13 +182,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 10000;
-    line-height: 1;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .menu-close:hover {
@@ -241,7 +211,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 0;
     height: 3px;
-    background: #fff;
+    background: var(--accent-gold);
     transition: width 0.3s ease;
 }
 
@@ -250,15 +220,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-contact {
-    background: #fff;
-    color: var(--primary-red);
+    background: var(--accent-gold);
+    color: #fff;
     padding: 0.5rem 1.5rem;
     border-radius: 30px;
     font-weight: 600;
 }
 
 .btn-contact:hover {
-    background: var(--gray-light);
+    background: var(--accent-gold-hover);
     transform: translateY(-1px);
 }
 
@@ -269,8 +239,8 @@ h1, h2, h3, h4, h5, h6 {
 .menu-btn {
     display: none;
     background: none;
-    border: 1px solid var(--primary-red);
-    color: var(--primary-red);
+    border: 1px solid var(--accent-gold);
+    color: #fff;
     padding: 0.5rem 1.25rem;
     border-radius: 20px;
     font-size: 0.875rem;
@@ -279,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .menu-btn:hover {
-    background: var(--primary-red);
+    background: var(--accent-gold);
     color: #fff;
 }
 
@@ -290,18 +260,18 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #fff;
     overflow: hidden;
-    /* Simplified gradient without complex layers */
-    background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
-    /* Ensure hero doesn't create stacking context that affects menu */
-    z-index: auto;
+    padding-top: 80px; /* Account for fixed navbar */
 }
 
-/* Remove the hero::before pseudo-element that was causing issues */
+#particle-canvas {
+    display: none;
+}
 
 .hero-content {
     position: relative;
-    z-index: 10;
+    z-index: 2;
     text-align: center;
     padding: 0 20px;
     max-width: 1200px;
@@ -360,37 +330,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-    background: var(--primary-red);
+    background: var(--accent-gold);
     color: #fff;
-    border: 2px solid var(--primary-red);
+    border: 2px solid var(--accent-gold);
 }
 
 .btn-primary:hover {
-    background: var(--accent-red);
+    background: var(--accent-gold-hover);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(153, 27, 27, 0.3);
+    box-shadow: 0 10px 30px rgba(217, 119, 6, 0.3);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--primary-red);
-    border: 2px solid var(--primary-red);
+    color: var(--accent-gold);
+    border: 2px solid var(--accent-gold);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-red);
+    background: var(--accent-gold);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(153, 27, 27, 0.3);
+    box-shadow: 0 10px 30px rgba(217, 119, 6, 0.3);
 }
 
-/* Accolades Section - Remove pseudo-element */
+/* Accolades Section */
 .accolades-section {
     background: var(--gray-light);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
-    position: relative;
-    background: linear-gradient(to bottom, #f5f5f5 0%, #fafafa 100%);
 }
 
 .accolades-grid {
@@ -426,8 +394,6 @@ h1, h2, h3, h4, h5, h6 {
 /* About Section */
 .about-section {
     background: #fff;
-    position: relative;
-    background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%);
 }
 
 .about-grid {
@@ -499,9 +465,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Professional Journey Section */
 .journey-section {
     background: var(--gray-light);
-    position: relative;
-    background-image: 
-        linear-gradient(180deg, transparent 0%, rgba(153, 27, 27, 0.01) 50%, transparent 100%);
 }
 
 .timeline {
@@ -571,10 +534,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Guidance Section */
 .guidance-section {
     background: #fff;
-    position: relative;
-    background-image: 
-        linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%),
-        radial-gradient(ellipse at center top, rgba(153, 27, 27, 0.02) 0%, transparent 50%);
 }
 
 .section-header {
@@ -667,11 +626,9 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--gray-medium);
 }
 
-/* AI Assistant Section - Remove pseudo-element */
+/* AI Assistant Section */
 .ai-section {
     background: var(--gray-light);
-    position: relative;
-    background: linear-gradient(to bottom, #f5f5f5 0%, #f9f9f9 100%);
 }
 
 .ai-interface {
@@ -703,7 +660,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .ai-submit {
     padding: 1rem 2rem;
-    background: var(--primary-red);
+    background: var(--accent-gold);
     color: #fff;
     border: none;
     border-radius: 50px;
@@ -715,8 +672,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .ai-submit:hover {
     transform: translateY(-2px);
-    background: var(--accent-red);
-    box-shadow: 0 5px 20px rgba(153, 27, 27, 0.2);
+    background: var(--accent-gold-hover);
+    box-shadow: 0 5px 20px rgba(217, 119, 6, 0.2);
 }
 
 .ai-submit:disabled {
@@ -765,16 +722,12 @@ h1, h2, h3, h4, h5, h6 {
 .contact-section {
     background: #fff;
     padding: 100px 0;
-    position: relative;
-    background: 
-        linear-gradient(to bottom, transparent, rgba(153, 27, 27, 0.01)),
-        linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
 }
 
 .contact-btn {
     display: inline-block;
     padding: 1rem 3rem;
-    background: var(--primary-red);
+    background: var(--accent-gold);
     color: #fff;
     text-decoration: none;
     border-radius: 50px;
@@ -786,8 +739,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .contact-btn:hover {
     transform: translateY(-2px);
-    background: var(--accent-red);
-    box-shadow: 0 10px 30px rgba(153, 27, 27, 0.2);
+    background: var(--accent-gold-hover);
+    box-shadow: 0 10px 30px rgba(217, 119, 6, 0.2);
 }
 
 .contact-links {
@@ -808,14 +761,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Footer */
 .footer {
-    background: var(--gray-light);
-    border-top: 1px solid var(--border-color);
+    background: var(--primary-red);
+    border-top: 1px solid var(--accent-red);
     padding: 2rem 0;
 }
 
 .footer-content {
     text-align: center;
-    color: var(--gray-medium);
+    color: #fff;
     font-size: 0.875rem;
 }
 
@@ -896,10 +849,6 @@ h1, h2, h3, h4, h5, h6 {
 .practices-section {
     background: #fff;
     padding: 80px 0;
-    position: relative;
-    background: 
-        linear-gradient(to right, #ffffff 0%, #fafafa 50%, #ffffff 100%),
-        radial-gradient(ellipse at left center, rgba(153, 27, 27, 0.03) 0%, transparent 60%);
 }
 
 .practices-grid {
@@ -985,10 +934,6 @@ h1, h2, h3, h4, h5, h6 {
 .why-choose-section {
     background: var(--gray-light);
     padding: 100px 0;
-    position: relative;
-    background: 
-        linear-gradient(135deg, #f9f9f9 0%, #f5f5f5 50%, #f9f9f9 100%),
-        radial-gradient(circle at 70% 30%, rgba(153, 27, 27, 0.04) 0%, transparent 50%);
 }
 
 .features-grid {
@@ -1066,10 +1011,6 @@ h1, h2, h3, h4, h5, h6 {
 .services-preview {
     background: #fff;
     padding: 100px 0;
-    position: relative;
-    background: 
-        linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%),
-        radial-gradient(circle at 50% 50%, rgba(153, 27, 27, 0.03) 0%, transparent 70%);
 }
 
 .services-grid-large {
@@ -1488,7 +1429,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    z-index: 2;
+    z-index: 3;
 }
 
 .scroll-indicator span {
@@ -1539,63 +1480,12 @@ h1, h2, h3, h4, h5, h6 {
         width: 100%;
         max-width: 300px;
     }
-} 
-
-/* Responsive adjustments for logo */
-@media (max-width: 768px) {
-    .nav-logo img {
-        height: 45px;
+    
+    .navbar {
+        padding: 10px 0;
     }
     
-    .hero-title {
-        font-size: 1.8rem;
+    .nav-logo {
+        height: 40px;
     }
-    
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .timeline-line {
-        left: 20px;
-    }
-    
-    .timeline-dot {
-        left: 20px;
-    }
-    
-    .timeline-content {
-        width: calc(100% - 60px);
-        margin-left: 60px !important;
-    }
-    
-    .guidance-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .ai-input-group {
-        flex-direction: column;
-    }
-} 
-
-/* Ensure all content is below menu overlay */
-.container,
-.section,
-.navbar {
-    position: relative;
-    z-index: auto;
-} 
-
-/* Hide particle canvas completely */
-#particle-canvas {
-    display: none !important;
-    visibility: hidden !important;
 } 
