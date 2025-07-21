@@ -566,8 +566,8 @@ h1, h2, h3, h4, h5, h6 {
 .card-icon {
     width: 60px;
     height: 60px;
-    background: var(--primary-red);
-    border: 1px solid var(--primary-red);
+    background: var(--button-red);
+    border: 1px solid var(--button-red);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -898,11 +898,16 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(153, 27, 27, 0.05);
-    border: 1px solid rgba(153, 27, 27, 0.1);
+    background: var(--button-red);
+    border: 1px solid var(--button-red);
     border-radius: 50%;
     position: relative;
     z-index: 1;
+}
+
+.practice-icon svg {
+    stroke: #fff;
+    fill: none;
 }
 
 .practice-card h3 {
@@ -984,14 +989,16 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(153, 27, 27, 0.05);
-    border: 1px solid rgba(153, 27, 27, 0.1);
+    background: var(--button-red);
+    border: 1px solid var(--button-red);
     border-radius: 50%;
 }
 
 .feature-icon svg {
     width: 50px;
     height: 50px;
+    stroke: #fff;
+    fill: none;
 }
 
 .feature-card h3 {
@@ -1142,14 +1149,16 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(153, 27, 27, 0.05);
-    border: 1px solid rgba(153, 27, 27, 0.1);
+    background: var(--button-red);
+    border: 1px solid var(--button-red);
     border-radius: 50%;
 }
 
 .contact-icon svg {
     width: 50px;
     height: 50px;
+    stroke: #fff;
+    fill: none;
 }
 
 .contact-card h3 {
@@ -1258,9 +1267,14 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(153, 27, 27, 0.05);
-    border: 1px solid rgba(153, 27, 27, 0.1);
+    background: var(--button-red);
+    border: 1px solid var(--button-red);
     border-radius: 50%;
+}
+
+.differentiator-icon svg {
+    stroke: #fff;
+    fill: none;
 }
 
 .differentiator-card h3 {
@@ -1312,9 +1326,14 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(153, 27, 27, 0.05);
-    border: 1px solid rgba(153, 27, 27, 0.1);
+    background: var(--button-red);
+    border: 1px solid var(--button-red);
     border-radius: 50%;
+}
+
+.location-icon svg {
+    stroke: #fff;
+    fill: none;
 }
 
 .location-card h3 {
