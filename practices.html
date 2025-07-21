@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Areas - DKL Advocates</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">DKL Advocates</div>
+            
+            <!-- Menu Button -->
+            <div class="menu-button" onclick="toggleMenu()">
+                <span class="menu-text">Menu</span>
+                <div class="menu-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            
+            <!-- Menu Overlay -->
+            <div class="menu-overlay" id="menuOverlay">
+                <div class="menu-close" onclick="toggleMenu()">×</div>
+                <div class="menu-items">
+                    <a href="index.html" onclick="toggleMenu()">Home</a>
+                    <a href="about.html" onclick="toggleMenu()">About Us</a>
+                    <a href="practices.html" onclick="toggleMenu()">Practice Areas</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Our Practice Areas</h1>
+            <p class="page-subtitle">Comprehensive legal services across nine specialized domains</p>
+        </div>
+    </section>
+
+    <!-- Practices Section -->
+    <section class="section practices-page-section">
+        <div class="container">
+            <div class="practices-grid">
+                <!-- Capital Markets -->
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 22H22L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M12 8V13" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Capital Markets</h3>
+                    <h4>Comprehensive Capital Markets Solutions</h4>
+                    <p>DKL Advocates provides comprehensive legal services across the full spectrum of capital markets transactions. Our team has extensive experience in both debt and equity capital raising, ensuring that our clients can access the capital they need to grow their businesses.</p>
+                    <div class="practice-services">
+                        <h5>Our Capital Markets Services Include:</h5>
+                        <ul>
+                            <li>Debt Capital Raising: Non-convertible debentures, Corporate bonds, Commercial paper programs, Medium-term note programs</li>
+                            <li>Equity Capital Raising: Initial public offerings (IPOs), Rights issues, Qualified institutional placements (QIPs), Preferential allotments</li>
+                            <li>Public Market Transactions: Listing compliance, Disclosure requirements, Market regulations, Investor relations</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Securities Law -->
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="2"/>
+                            <path d="M8 6V4C8 2.89543 8.89543 2 10 2H14C15.1046 2 16 2.89543 16 4V6" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Securities Law</h3>
+                    <h4>Navigating India's Securities Regulatory Framework</h4>
+                    <p>Our securities law practice provides comprehensive guidance on compliance with India's securities regulations, ensuring that our clients can operate with confidence in the public markets.</p>
+                    <div class="practice-services">
+                        <h5>Key Service Areas:</h5>
+                        <ul>
+                            <li>Regulatory Compliance: SEBI compliance frameworks, Disclosure obligations, Insider trading regulations</li>
+                            <li>Securities Offerings: Public offerings, Private placements, Rights issues, Buyback programs</li>
+                            <li>Ongoing Compliance: Continuous disclosure requirements, Board governance, Shareholder communications</li>
+                            <li>Enforcement and Litigation: Regulatory investigations, Enforcement proceedings, Appeals and representations</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Corporate Governance -->
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/>
+                            <path d="M12 7V12L15 15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Corporate Governance</h3>
+                    <h4>Building Strong Governance Foundations</h4>
+                    <p>Effective corporate governance is essential for sustainable business growth and regulatory compliance. Our corporate governance practice helps clients establish and maintain governance structures that promote accountability, transparency, and long-term value creation.</p>
+                </div>
+                
+                <!-- Company Law -->
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 14C19 17.7712 16.5 20 12 22C7.5 20 5 17.7712 5 14V6L12 3L19 6V14Z" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Company Law</h3>
+                    <h4>Comprehensive Company Law Services</h4>
+                    <p>Our company law practice provides full-service support for all aspects of corporate legal requirements, from formation to complex restructuring transactions.</p>
+                </div>
+                
+                <!-- Commercial Litigation & Arbitration -->
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L3 7V11C3 15.5 5.23 19.68 8.62 22.15L12 24L15.38 22.15C18.77 19.68 21 15.5 21 11V7L12 2Z" stroke="white" stroke-width="2"/>
+                            <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Commercial Litigation & Arbitration</h3>
+                    <h4>Resolving Commercial Disputes Effectively</h4>
+                    <p>Our litigation and arbitration practice provides comprehensive dispute resolution services, helping clients resolve commercial conflicts efficiently and cost-effectively.</p>
+                </div>
+                
+                <!-- Insurance Law -->
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 16V8C21 6.89543 20.10457 6 19 6H5C3.89543 6 3 6.89543 3 8V16C3 17.10457 3.89543 18 5 18H19C20.10457 18 21 17.10457 21 16Z" stroke="white" stroke-width="2"/>
+                            <path d="M3 10H21" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Insurance Law</h3>
+                    <h4>Comprehensive Insurance Law Guidance</h4>
+                    <p>Our insurance law practice provides specialized legal services to insurance companies, intermediaries, and related entities, ensuring compliance with IRDAI regulations and industry best practices.</p>
+                </div>
+                
+                <!-- Foreign Investment & Private Equity -->
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Foreign Investment & Private Equity</h3>
+                    <h4>Facilitating Cross-Border Investment</h4>
+                    <p>Our foreign investment and private equity practice assists clients in navigating India's foreign investment regulations and structuring complex investment transactions.</p>
+                </div>
+                
+                <!-- Due Diligence & Legal Advice -->
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11L12 14L22 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Due Diligence & Legal Advice</h3>
+                    <h4>Comprehensive Legal Due Diligence Services</h4>
+                    <p>Our due diligence practice provides thorough legal analysis and risk assessment to support informed business decisions and successful transactions.</p>
+                </div>
+                
+                <!-- Regulatory Representations -->
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 12H21M3 6H21M3 18H15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Regulatory Representations</h3>
+                    <h4>Expert Representation Before Financial Regulators</h4>
+                    <p>Our regulatory representations practice provides specialized advocacy services before key financial regulators, ensuring effective resolution of regulatory matters.</p>
+                    <div class="practice-services">
+                        <h5>Our Regulatory Representation Services Include:</h5>
+                        <ul>
+                            <li>SEBI Representations: Enforcement proceedings, Adjudication matters, Appeals, Regulatory consultations</li>
+                            <li>IRDAI Representations: Regulatory approvals, Compliance matters, Enforcement proceedings</li>
+                            <li>PFRDA Representations: Pension fund matters, Regulatory compliance, Advisory services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container text-center">
+            <h2 class="section-title">How We Can Help</h2>
+            <p class="section-description">
+                Whether you need assistance with capital markets transactions, securities law compliance, corporate governance, or regulatory representations, our specialized team has the expertise to provide practical, effective solutions tailored to your business needs.
+            </p>
+            <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 DKL Advocates. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

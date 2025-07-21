@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gowree Gokhale - Legal Counsel & Advisor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F8F9FA;
+            --text-color: #212529;
+            --primary-color: #005f73; /* A deep, professional teal */
+            --secondary-color: #0a9396; /* A slightly brighter teal for accents */
+            --card-bg: #FFFFFF;
+            --border-color: #DEE2E6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'DM Serif Display', serif;
+        }
+        .text-primary { color: var(--primary-color); }
+        .bg-primary { background-color: var(--primary-color); }
+        .border-primary { border-color: var(--primary-color); }
+
+        .section {
+            padding: 3rem 1rem; /* Reduced mobile padding */
+        }
+        @media (min-width: 768px) {
+            .section { padding: 8rem 1rem; }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* Disable hover effects on mobile */
+        @media (hover: hover) {
+            .card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            }
+        }
+        
+        .animated-gradient-btn {
+            background-image: linear-gradient(to right, var(--primary-color) 0%, var(--secondary-color) 50%, var(--primary-color) 100%);
+            background-size: 200% auto;
+            transition: background-position 0.5s;
+        }
+        .animated-gradient-btn:hover {
+            background-position: right center;
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero background animation */
+        #hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        /* AI Assistant response styling */
+        #ai-response-area {
+            white-space: pre-wrap; /* Allows line breaks and preserves spaces */
+        }
+        
+        /* Mobile Navigation Styles */
+        .mobile-menu-btn {
+            display: none;
+        }
+        @media (max-width: 767px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 60;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 55;
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Mobile Typography Adjustments */
+        @media (max-width: 640px) {
+            h1 { font-size: 2.5rem !important; }
+            h2 { font-size: 2rem !important; }
+            h3 { font-size: 1.5rem !important; }
+            p { font-size: 1rem; }
+            .text-lg { font-size: 1.125rem !important; }
+        }
+        
+        /* Mobile Timeline Adjustments */
+        @media (max-width: 768px) {
+            #experience .absolute.left-1\/2 {
+                left: 20px;
+            }
+            #experience .w-1\/2 {
+                width: 100%;
+                padding-left: 40px;
+                padding-right: 1rem;
+            }
+            #experience .text-right {
+                text-align: left;
+            }
+            #experience .pl-8 {
+                padding-left: 40px;
+            }
+            #experience time {
+                display: block;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        /* Iframe Container Fix */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* Touch-friendly button sizes */
+        @media (max-width: 640px) {
+            button, .animated-gradient-btn {
+                min-height: 48px;
+                min-width: 48px;
+            }
+        }
+        
+        /* Performance: Reduce particles on mobile */
+        @media (max-width: 768px) {
+            #hero-bg {
+                opacity: 0.3; /* Make particles less prominent on mobile */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <a href="#home" class="text-xl md:text-2xl font-bold text-primary">Gowree Gokhale</a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#guidance" class="hover:text-primary transition-colors">Guidance</a>
+                    <a href="#ai-assistant" class="hover:text-primary transition-colors">AI Assistant</a>
+                    <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn p-2 text-gray-600 hover:text-primary" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-xl font-bold text-primary">Menu</h3>
+                <button onclick="toggleMobileMenu()" class="p-2 text-gray-600 hover:text-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="#about" onclick="toggleMobileMenu()" class="block py-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors">About</a>
+                <a href="#guidance" onclick="toggleMobileMenu()" class="block py-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors">Guidance</a>
+                <a href="#ai-assistant" onclick="toggleMobileMenu()" class="block py-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors">AI Assistant</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="block py-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors">Contact</a>
+                <a href="mailto:gowree.law@gmail.com" class="block mt-6 bg-primary text-white text-center py-3 px-6 rounded-full font-bold">Send Email</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative min-h-[70vh] md:min-h-[80vh] flex items-center bg-gray-50 overflow-hidden">
+        <div id="hero-bg"></div> <!-- Canvas for animation will be injected here -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="reveal">
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 leading-tight">
+                        Shaping the Future of <span class="text-primary">TMT Law</span>.
+                    </h1>
+                    <p class="mt-4 md:mt-6 text-base sm:text-lg text-gray-600 max-w-lg">
+                        An independent Advocate & Solicitor providing strategic counsel at the intersection of technology, media, and intellectual property.
+                    </p>
+                    <a href="#guidance" class="mt-8 md:mt-12 inline-block animated-gradient-btn text-white font-bold py-3 px-6 md:px-8 rounded-full text-base md:text-lg shadow-lg">
+                        Ask for Career Guidance
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Accolades Section -->
+        <section id="accolades" class="section reveal">
+            <div class="text-center">
+                <h2 class="text-xs sm:text-sm font-bold uppercase tracking-widest text-gray-500">Recognized Leader in the Legal Field</h2>
+                <div class="mt-6 md:mt-8 flex justify-center items-center gap-4 sm:gap-8 md:gap-16 flex-wrap">
+                    <div class="text-center group">
+                        <img src="https://placehold.co/200x80/FFFFFF/212529?text=Legal+500" alt="Legal 500 Logo" class="h-10 sm:h-12 md:h-16 grayscale group-hover:grayscale-0 transition-all duration-300">
+                        <p class="mt-2 text-xs sm:text-sm font-medium text-gray-600">Hall of Fame (TMT)</p>
+                    </div>
+                     <div class="text-center group">
+                        <img src="https://placehold.co/200x80/FFFFFF/212529?text=IBLJ" alt="India Business Law Journal Logo" class="h-10 sm:h-12 md:h-16 grayscale group-hover:grayscale-0 transition-all duration-300">
+                        <p class="mt-2 text-xs sm:text-sm font-medium text-gray-600">Top 100 Lawyers</p>
+                    </div>
+                     <div class="text-center group">
+                        <img src="https://placehold.co/200x80/FFFFFF/212529?text=ILS+Law+College" alt="ILS Law College Logo" class="h-10 sm:h-12 md:h-16 grayscale group-hover:grayscale-0 transition-all duration-300">
+                        <p class="mt-2 text-xs sm:text-sm font-medium text-gray-600">Best Student Awardee</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- About Section -->
+        <section id="about" class="section reveal">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">A Strategic Partner for the Digital Age.</h2>
+                    <div class="text-gray-600 leading-relaxed space-y-4">
+                        <p>I am an Advocate and Solicitor with over two decades of experience, specializing in general commercial and Intellectual Property advisory and litigation. My practice is deeply focused on the dynamic intersection of Technology, Media, and Telecom (TMT).</p>
+                        <p>My expertise encompasses a wide range of modern legal frontiers, including e-commerce, gaming law, data protection, and cybersecurity, alongside the pharma and healthcare sectors. I am committed to providing clear, strategic, and forward-thinking legal counsel.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div class="card p-4 sm:p-6 text-center">
+                        <h3 class="text-3xl sm:text-4xl font-bold text-primary">22+</h3>
+                        <p class="mt-1 text-sm sm:text-base font-medium">Years of Experience</p>
+                    </div>
+                    <div class="card p-4 sm:p-6 text-center">
+                        <h3 class="text-3xl sm:text-4xl font-bold text-primary">TMT</h3>
+                        <p class="mt-1 text-sm sm:text-base font-medium">Core Specialization</p>
+                    </div>
+                    <div class="card p-4 sm:p-6 col-span-2">
+                        <h4 class="font-bold text-base sm:text-lg mb-2 sm:mb-3">Core Competencies</h4>
+                        <ul class="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
+                            <li class="flex items-center"><span class="text-secondary mr-2 sm:mr-3">✓</span> Intellectual Property</li>
+                            <li class="flex items-center"><span class="text-secondary mr-2 sm:mr-3">✓</span> Contract Negotiation</li>
+                            <li class="flex items-center"><span class="text-secondary mr-2 sm:mr-3">✓</span> IT Law & Data Protection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section reveal">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 md:mb-16">Professional Journey</h2>
+            <div class="relative max-w-2xl mx-auto">
+                <div class="absolute left-5 md:left-1/2 top-0 h-full w-0.5 bg-gray-200"></div>
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-8 md:mb-12">
+                    <div class="w-full md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                        <div class="card p-4 sm:p-6 ml-10 md:ml-0">
+                            <h3 class="text-lg sm:text-xl font-bold text-primary">Independent Legal Counsel</h3>
+                            <p class="text-xs sm:text-sm text-gray-500 mt-1">Self-employed</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-5 md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-primary ring-8 ring-white"></div>
+                    <div class="w-full md:w-1/2 pl-10 md:pl-8">
+                        <time class="text-sm sm:text-base font-medium text-gray-500">2024 - Present</time>
+                    </div>
+                </div>
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-8 md:mb-12">
+                    <div class="w-full md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0 order-2 md:order-1">
+                        <time class="text-sm sm:text-base font-medium text-gray-500 block pl-10 md:pl-0">2002 - 2024</time>
+                    </div>
+                    <div class="absolute left-5 md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-secondary ring-8 ring-white"></div>
+                    <div class="w-full md:w-1/2 md:pl-8 order-1 md:order-2">
+                         <div class="card p-4 sm:p-6 ml-10 md:ml-0">
+                            <h3 class="text-lg sm:text-xl font-bold text-primary">Leader & Counsel</h3>
+                            <p class="text-xs sm:text-sm text-gray-500 mt-1">Nishith Desai Associates</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="relative flex flex-col md:flex-row items-start md:items-center">
+                    <div class="w-full md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                        <div class="card p-4 sm:p-6 ml-10 md:ml-0">
+                            <h3 class="text-lg sm:text-xl font-bold text-primary">Legal Education</h3>
+                            <p class="text-xs sm:text-sm text-gray-500 mt-1">University of Mumbai, ILS Law</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-5 md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-secondary ring-8 ring-white"></div>
+                    <div class="w-full md:w-1/2 pl-10 md:pl-8">
+                        <time class="text-sm sm:text-base font-medium text-gray-500">1991 - 2001</time>
+                    </div>
+                </div>
+            </div>  
+        </section>
+
+        <!-- Career Guidance Section -->
+        <section id="guidance" class="section bg-white -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold">Join the Conversation</h2>
+                <p class="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed">
+                    I am passionate about helping legal professionals navigate their careers. Participate by submitting your questions for the upcoming live Q&A session.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 mt-12 md:mt-16 max-w-6xl mx-auto">
+                <div class="card p-6 md:p-8 flex flex-col">
+                    <div class="flex-shrink-0">
+                        <span class="inline-block bg-secondary/10 text-secondary p-3 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </span>
+                        <h3 class="text-xl sm:text-2xl font-bold mt-4">Step 1: Ask & Register</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mt-2">Submit your questions and optionally provide your email to be notified about the live session date.</p>
+                    </div>
+                    <div class="mt-6 flex-grow">
+                         <div class="iframe-container rounded-md overflow-hidden border">
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe6_VIwv_XSugzMOjvPLfzhPZvaYoBO9dCIhOtHFvZLi6S9Tg/viewform?embedded=true" title="Career Guidance Form">Loading…</iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-6 md:p-8 flex flex-col bg-primary/5">
+                     <div class="flex-shrink-0">
+                        <span class="inline-block bg-primary/10 text-primary p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        </span>
+                        <h3 class="text-xl sm:text-2xl font-bold mt-4">Step 2: Attend the Session</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mt-2">Once a date is set, it will be announced here and sent to everyone who registered their email.</p>
+                    </div>
+                    <div class="mt-6 flex-grow flex flex-col justify-center items-center text-center bg-white p-4 sm:p-6 rounded-lg border">
+                        <h4 class="text-lg sm:text-xl font-bold text-primary">Live Q&A Session</h4>
+                        <p class="text-sm sm:text-base text-gray-500 mt-2 font-medium">Date & Time: To Be Announced</p>
+                        <p class="text-xs sm:text-sm text-gray-500 mt-4">Please check back later for the finalized schedule.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Assistant Section -->
+        <section id="ai-assistant" class="section reveal">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold">
+                    <span class="text-primary">AI-Powered</span> Career Assistant
+                </h2>
+                <p class="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed">
+                    Have a quick career question? Get an instant, AI-powered perspective from a virtual mentor trained on key principles of TMT and IP law.
+                </p>
+            </div>
+            <div class="mt-8 md:mt-12 max-w-2xl mx-auto">
+                <div class="card p-6 md:p-8">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input type="text" id="ai-prompt-input" placeholder="e.g., How do I start in TMT law?" class="flex-grow p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-secondary focus:border-secondary transition text-base">
+                        <button id="ai-submit-btn" class="animated-gradient-btn text-white font-bold py-3 px-6 rounded-md shadow-lg whitespace-nowrap">
+                            Get AI Insight
+                        </button>
+                    </div>
+                    <div id="ai-response-container" class="mt-6 p-4 sm:p-6 bg-gray-50 rounded-lg border border-gray-200 min-h-[100px] hidden">
+                        <div id="ai-loading-spinner" class="text-center hidden">
+                            <svg class="animate-spin h-6 w-6 text-primary mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <p class="mt-2 text-xs sm:text-sm text-gray-500">Generating insights...</p>
+                        </div>
+                        <p id="ai-response-area" class="text-sm sm:text-base text-gray-700 leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section text-center reveal">
+             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold">Let's Connect</h2>
+             <p class="mt-4 max-w-xl mx-auto text-base sm:text-lg text-gray-600">For professional inquiries, speaking engagements, or collaborations, please feel free to reach out.</p>
+            <div class="mt-8 md:mt-10">
+                 <a href="mailto:gowree.law@gmail.com" class="inline-block animated-gradient-btn text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-full text-base sm:text-lg shadow-lg">
+                    Send an Email
+                </a>
+                <p class="mt-4 sm:mt-6 text-xs sm:text-sm">or connect on <a href="https://www.linkedin.com/in/gowree-gokhale-9337634b" target="_blank" rel="noopener noreferrer" class="font-bold text-primary hover:underline">LinkedIn</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 sm:py-8 bg-gray-100 border-t">
+        <p class="text-gray-500 text-xs sm:text-sm">&copy; 2025 Gowree Gokhale. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        // Check if device is mobile
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+        
+        // --- UI Elements ---
+        const aiSubmitBtn = document.getElementById('ai-submit-btn');
+        const aiPromptInput = document.getElementById('ai-prompt-input');
+        const aiResponseContainer = document.getElementById('ai-response-container');
+        const aiLoadingSpinner = document.getElementById('ai-loading-spinner');
+        const aiResponseArea = document.getElementById('ai-response-area');
+
+        // --- Gemini API Function ---
+        async function getAICareerAdvice(prompt) {
+            aiResponseContainer.style.display = 'block';
+            aiLoadingSpinner.style.display = 'block';
+            aiResponseArea.textContent = '';
+            aiSubmitBtn.disabled = true;
+            aiSubmitBtn.classList.add('opacity-50');
+
+            // This is the prompt that instructs the Gemini model
+            const fullPrompt = `
+                You are a virtual career mentor for legal professionals in India. Your persona is that of an experienced, encouraging, and highly knowledgeable senior lawyer, mirroring the expertise of Gowree Gokhale, who is a top lawyer specializing in Technology, Media, and Telecom (TMT), Intellectual Property (IP), and commercial law.
+
+                A user is asking for career advice. Their question is: "${prompt}"
+
+                Provide a clear, structured, and insightful response. Your answer should be:
+                1.  **Relevant to India:** Frame your advice within the context of the Indian legal industry.
+                2.  **Actionable:** Give practical steps the user can take.
+                3.  **Encouraging:** Maintain a positive and mentoring tone.
+                4.  **Structured:** Use bullet points or numbered lists for clarity.
+                5.  **Concise:** Keep the response focused and to the point.
+
+                Do not start with "As a virtual career mentor..." or any other preamble. Dive directly into the advice.
+            `;
+
+            let chatHistory = [{ role: "user", parts: [{ text: fullPrompt }] }];
+            const payload = { contents: chatHistory };
+            const apiKey = "AIzaSyANEBeYiW3I_hYvfXWaP9-Un4bpY3R5Hr8"; // API key has been added
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    aiResponseArea.textContent = text;
+                } else {
+                    throw new Error("Invalid response structure from API.");
+                }
+
+            } catch (error) {
+                console.error("Gemini API call failed:", error);
+                aiResponseArea.textContent = "Sorry, I couldn't generate a response at this time. Please try again later.";
+            } finally {
+                aiLoadingSpinner.style.display = 'none';
+                aiSubmitBtn.disabled = false;
+                aiSubmitBtn.classList.remove('opacity-50');
+            }
+        }
+
+        // --- Event Listeners ---
+        aiSubmitBtn.addEventListener('click', () => {
+            const prompt = aiPromptInput.value.trim();
+            if (prompt) {
+                getAICareerAdvice(prompt);
+            }
+        });
+
+        aiPromptInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                aiSubmitBtn.click();
+            }
+        });
+
+        // Scroll reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // three.js hero background animation
+        let scene, camera, renderer, particles, particleSystem2;
+        let mouseX = 0, mouseY = 0;
+        let windowHalfX = window.innerWidth / 2;
+        let windowHalfY = window.innerHeight / 2;
+        
+        function initHeroAnimation() {
+            const container = document.getElementById('hero-bg');
+            if (!container) return;
+            
+            // Skip or reduce animation on mobile for performance
+            if (isMobile && window.innerWidth < 768) {
+                // Simple static background for mobile
+                container.style.background = 'linear-gradient(45deg, rgba(0,95,115,0.05) 0%, rgba(10,147,150,0.05) 100%)';
+                return;
+            }
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+            camera.position.z = 8;
+
+            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !isMobile }); // Disable antialiasing on mobile
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
+            container.appendChild(renderer.domElement);
+
+            // Create particle systems with reduced count on mobile
+            createParticleSystem1();
+            if (!isMobile) {
+                createParticleSystem2();
+            }
+            
+            // Add mouse move listener for interactive effect (desktop only)
+            if (!isMobile) {
+                document.addEventListener('mousemove', onDocumentMouseMove, false);
+            }
+            window.addEventListener('resize', onWindowResize, false);
+            animate();
+        }
+        
+        function createParticleSystem1() {
+            const particleCount = isMobile ? 2000 : 8000; // Reduced particles on mobile
+            const particlesGeometry = new THREE.BufferGeometry();
+            const posArray = new Float32Array(particleCount * 3);
+            const velocityArray = new Float32Array(particleCount * 3);
+            const colorsArray = new Float32Array(particleCount * 3);
+            const sizesArray = new Float32Array(particleCount);
+
+            for (let i = 0; i < particleCount; i++) {
+                const i3 = i * 3;
+                // Spread particles in a larger area
+                posArray[i3] = (Math.random() - 0.5) * 30;
+                posArray[i3 + 1] = (Math.random() - 0.5) * 30;
+                posArray[i3 + 2] = (Math.random() - 0.5) * 30;
+                
+                // Add flowing velocities
+                velocityArray[i3] = (Math.random() - 0.5) * 0.05;
+                velocityArray[i3 + 1] = (Math.random() - 0.5) * 0.05;
+                velocityArray[i3 + 2] = (Math.random() - 0.5) * 0.02;
+                
+                // Color variations (teal to cyan range)
+                const colorIntensity = 0.5 + Math.random() * 0.5;
+                colorsArray[i3] = 0; // R
+                colorsArray[i3 + 1] = 0.5 * colorIntensity; // G
+                colorsArray[i3 + 2] = 0.8 * colorIntensity; // B
+                
+                // Variable sizes
+                sizesArray[i] = isMobile ? Math.random() * 0.05 + 0.02 : Math.random() * 0.1 + 0.02;
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            particlesGeometry.setAttribute('velocity', new THREE.BufferAttribute(velocityArray, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
+            particlesGeometry.setAttribute('size', new THREE.BufferAttribute(sizesArray, 1));
+            
+            const particleMaterial = new THREE.PointsMaterial({
+                size: isMobile ? 0.05 : 0.08,
+                color: 0x00ffff,
+                transparent: true,
+                opacity: isMobile ? 0.5 : 0.8,
+                vertexColors: true,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                sizeAttenuation: true
+            });
+
+            particles = new THREE.Points(particlesGeometry, particleMaterial);
+            scene.add(particles);
+        }
+        
+        function createParticleSystem2() {
+            // Second layer of smaller, faster particles
+            const particleCount = 5000;
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            const velocities = new Float32Array(particleCount * 3);
+            
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 40;
+                positions[i + 1] = (Math.random() - 0.5) * 40;
+                positions[i + 2] = (Math.random() - 0.5) * 20;
+                
+                velocities[i] = (Math.random() - 0.5) * 0.1;
+                velocities[i + 1] = Math.random() * 0.1 - 0.05;
+                velocities[i + 2] = (Math.random() - 0.5) * 0.05;
+            }
+            
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
+            
+            const material = new THREE.PointsMaterial({
+                size: 0.03,
+                color: 0x0a9396,
+                transparent: true,
+                opacity: 0.5,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            });
+            
+            particleSystem2 = new THREE.Points(geometry, material);
+            scene.add(particleSystem2);
+        }
+        
+        function onDocumentMouseMove(event) {
+            mouseX = (event.clientX - windowHalfX) * 0.001;
+            mouseY = (event.clientY - windowHalfY) * 0.001;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Update first particle system
+            const positions = particles.geometry.attributes.position.array;
+            const velocities = particles.geometry.attributes.velocity.array;
+            const sizes = particles.geometry.attributes.size.array;
+            
+            for (let i = 0; i < positions.length; i += 3) {
+                // Update positions
+                positions[i] += velocities[i];
+                positions[i + 1] += velocities[i + 1];
+                positions[i + 2] += velocities[i + 2];
+                
+                // Wrap particles around
+                if (positions[i] > 15) positions[i] = -15;
+                if (positions[i] < -15) positions[i] = 15;
+                if (positions[i + 1] > 15) positions[i + 1] = -15;
+                if (positions[i + 1] < -15) positions[i + 1] = 15;
+                if (positions[i + 2] > 15) positions[i + 2] = -15;
+                if (positions[i + 2] < -15) positions[i + 2] = 15;
+            }
+            
+            // Pulsing effect for sizes
+            const time = Date.now() * 0.001;
+            for (let i = 0; i < sizes.length; i++) {
+                sizes[i] = (Math.sin(time + i) * 0.5 + 0.5) * 0.1 + 0.02;
+            }
+            
+            particles.geometry.attributes.position.needsUpdate = true;
+            particles.geometry.attributes.size.needsUpdate = true;
+            
+            // Update second particle system
+            const positions2 = particleSystem2.geometry.attributes.position.array;
+            const velocities2 = particleSystem2.geometry.attributes.velocity.array;
+            
+            for (let i = 0; i < positions2.length; i += 3) {
+                positions2[i] += velocities2[i];
+                positions2[i + 1] += velocities2[i + 1];
+                positions2[i + 2] += velocities2[i + 2];
+                
+                if (positions2[i] > 20) positions2[i] = -20;
+                if (positions2[i] < -20) positions2[i] = 20;
+                if (positions2[i + 1] > 20) positions2[i + 1] = -20;
+                if (positions2[i + 1] < -20) positions2[i + 1] = 20;
+                if (positions2[i + 2] > 10) positions2[i + 2] = -10;
+                if (positions2[i + 2] < -10) positions2[i + 2] = 10;
+            }
+            
+            particleSystem2.geometry.attributes.position.needsUpdate = true;
+            
+            // Rotate both systems
+            particles.rotation.x += 0.0003;
+            particles.rotation.y += 0.0005 + mouseX * 0.1;
+            
+            particleSystem2.rotation.x -= 0.0002;
+            particleSystem2.rotation.y -= 0.0003 + mouseY * 0.1;
+            
+            // Camera movement based on mouse
+            camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY * 2 - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+            
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            const container = document.getElementById('hero-bg');
+            if (!container) return;
+            camera.aspect = container.offsetWidth / container.offsetHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+        }
+
+        // --- Run on page load ---
+        initHeroAnimation();
+    </script>
+
+</body>
+</html>
