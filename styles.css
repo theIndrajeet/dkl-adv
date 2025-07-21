@@ -10,8 +10,8 @@
     --text-color: #333;
     --primary-red: #991b1b;
     --accent-red: #b91c1c;
-    --accent-gold: #d97706; /* Third color for buttons */
-    --accent-gold-hover: #b45309; /* Darker gold for hover */
+    --button-red: #7f1d1d; /* Darker red for buttons */
+    --button-red-hover: #450a0a; /* Even darker red for hover */
     --gray-light: #f5f5f5;
     --gray-medium: #666;
     --gray-dark: #333;
@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Menu Button */
 .menu-button {
-    background: var(--accent-gold);
+    background: var(--button-red);
     color: #fff;
     padding: 10px 30px;
     border-radius: 30px;
@@ -126,8 +126,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .menu-button:hover {
     transform: scale(1.05);
-    background: var(--accent-gold-hover);
-    box-shadow: 0 5px 20px rgba(217, 119, 6, 0.3);
+    background: var(--button-red-hover);
+    box-shadow: 0 5px 20px rgba(127, 29, 29, 0.3);
 }
 
 .menu-text {
@@ -211,7 +211,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 0;
     height: 3px;
-    background: var(--accent-gold);
+    background: #fff;
     transition: width 0.3s ease;
 }
 
@@ -220,7 +220,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-contact {
-    background: var(--accent-gold);
+    background: var(--button-red);
     color: #fff;
     padding: 0.5rem 1.5rem;
     border-radius: 30px;
@@ -228,7 +228,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-contact:hover {
-    background: var(--accent-gold-hover);
+    background: var(--button-red-hover);
     transform: translateY(-1px);
 }
 
@@ -239,7 +239,7 @@ h1, h2, h3, h4, h5, h6 {
 .menu-btn {
     display: none;
     background: none;
-    border: 1px solid var(--accent-gold);
+    border: 1px solid #fff;
     color: #fff;
     padding: 0.5rem 1.25rem;
     border-radius: 20px;
@@ -249,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .menu-btn:hover {
-    background: var(--accent-gold);
+    background: var(--button-red);
     color: #fff;
 }
 
@@ -330,28 +330,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-    background: var(--accent-gold);
+    background: var(--button-red);
     color: #fff;
-    border: 2px solid var(--accent-gold);
+    border: 2px solid var(--button-red);
 }
 
 .btn-primary:hover {
-    background: var(--accent-gold-hover);
+    background: var(--button-red-hover);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(217, 119, 6, 0.3);
+    box-shadow: 0 10px 30px rgba(127, 29, 29, 0.3);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--accent-gold);
-    border: 2px solid var(--accent-gold);
+    color: var(--button-red);
+    border: 2px solid var(--button-red);
 }
 
 .btn-secondary:hover {
-    background: var(--accent-gold);
+    background: var(--button-red);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(217, 119, 6, 0.3);
+    box-shadow: 0 10px 30px rgba(127, 29, 29, 0.3);
 }
 
 /* Accolades Section */
@@ -660,7 +660,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .ai-submit {
     padding: 1rem 2rem;
-    background: var(--accent-gold);
+    background: var(--button-red);
     color: #fff;
     border: none;
     border-radius: 50px;
@@ -672,8 +672,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .ai-submit:hover {
     transform: translateY(-2px);
-    background: var(--accent-gold-hover);
-    box-shadow: 0 5px 20px rgba(217, 119, 6, 0.2);
+    background: var(--button-red-hover);
+    box-shadow: 0 5px 20px rgba(127, 29, 29, 0.2);
 }
 
 .ai-submit:disabled {
@@ -727,7 +727,7 @@ h1, h2, h3, h4, h5, h6 {
 .contact-btn {
     display: inline-block;
     padding: 1rem 3rem;
-    background: var(--accent-gold);
+    background: var(--button-red);
     color: #fff;
     text-decoration: none;
     border-radius: 50px;
@@ -739,8 +739,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .contact-btn:hover {
     transform: translateY(-2px);
-    background: var(--accent-gold-hover);
-    box-shadow: 0 10px 30px rgba(217, 119, 6, 0.2);
+    background: var(--button-red-hover);
+    box-shadow: 0 10px 30px rgba(127, 29, 29, 0.2);
 }
 
 .contact-links {
