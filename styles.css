@@ -131,6 +131,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.3s ease;
     text-align: center;
     position: relative;
+    z-index: 1001;
 }
 
 .menu-button:hover {
@@ -174,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    z-index: 2000;
+    z-index: 9999;
 }
 
 .menu-overlay.active {
@@ -190,6 +191,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
+    z-index: 10000;
+    line-height: 1;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-close:hover {
@@ -268,14 +276,12 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fff;
     overflow: hidden;
     /* Add a subtle gradient overlay */
     background: 
         linear-gradient(135deg, #ffffff 0%, #fafafa 100%),
         radial-gradient(ellipse at top right, rgba(153, 27, 27, 0.05) 0%, transparent 70%),
         radial-gradient(ellipse at bottom left, rgba(153, 27, 27, 0.05) 0%, transparent 70%);
-    position: relative;
 }
 
 .hero::before {
@@ -289,6 +295,7 @@ h1, h2, h3, h4, h5, h6 {
         repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(153, 27, 27, 0.01) 35px, rgba(153, 27, 27, 0.01) 70px),
         repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(153, 27, 27, 0.01) 35px, rgba(153, 27, 27, 0.01) 70px);
     pointer-events: none;
+    z-index: 1;
 }
 
 #particle-canvas {
@@ -1509,7 +1516,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    z-index: 3;
+    z-index: 2;
 }
 
 .scroll-indicator span {
