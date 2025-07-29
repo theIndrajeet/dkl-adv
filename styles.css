@@ -423,20 +423,46 @@ body.menu-open {
     padding-top: 80px;
 }
 
+/* Animated Triangle Pattern */
 .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(219, 137, 137, 0.1) 0%, transparent 70%);
-    animation: rotate 30s linear infinite;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(60deg, transparent 0%, transparent 49%, rgba(219, 137, 137, 0.03) 50%, transparent 51%, transparent 100%),
+        linear-gradient(-60deg, transparent 0%, transparent 49%, rgba(158, 0, 1, 0.03) 50%, transparent 51%, transparent 100%),
+        linear-gradient(120deg, transparent 0%, transparent 49%, rgba(131, 8, 8, 0.03) 50%, transparent 51%, transparent 100%);
+    background-size: 50px 50px;
+    animation: triangleMove 20s linear infinite;
+    z-index: 1;
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+/* Second layer of triangles for depth */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(30deg, transparent 0%, transparent 49%, rgba(219, 137, 137, 0.02) 50%, transparent 51%, transparent 100%),
+        linear-gradient(-30deg, transparent 0%, transparent 49%, rgba(158, 0, 1, 0.02) 50%, transparent 51%, transparent 100%);
+    background-size: 80px 80px;
+    animation: triangleMove 30s linear infinite reverse;
+    z-index: 1;
+}
+
+@keyframes triangleMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
 }
 
 .hero-content {
@@ -1236,6 +1262,8 @@ body.menu-open {
 .services-preview {
     background: var(--bg-color);
     padding: 100px 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .services-grid-large {
@@ -1438,6 +1466,8 @@ body.menu-open {
     padding: 120px 0 80px;
     text-align: center;
     border-bottom: 1px solid rgba(0,0,0, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
 .page-title {
@@ -1736,4 +1766,228 @@ body.menu-open {
     .nav-logo {
         height: 40px;
     }
+} 
+
+/* Add geometric patterns to sections */
+.why-choose-section {
+    background: linear-gradient(180deg, rgba(219, 137, 137, 0.05) 0%, transparent 100%);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.why-choose-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(219, 137, 137, 0.03) 35px, rgba(219, 137, 137, 0.03) 70px),
+        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(158, 0, 1, 0.03) 35px, rgba(158, 0, 1, 0.03) 70px);
+    animation: patternShift 40s linear infinite;
+    z-index: 0;
+}
+
+@keyframes patternShift {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(70px);
+    }
+}
+
+.services-preview {
+    background: var(--bg-color);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.services-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(131, 8, 8, 0.02) 40px, rgba(131, 8, 8, 0.02) 80px),
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(219, 137, 137, 0.02) 40px, rgba(219, 137, 137, 0.02) 80px);
+    animation: gridMove 25s linear infinite;
+    z-index: 0;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-80px, -80px);
+    }
+}
+
+/* Ensure content stays above patterns */
+.container,
+.features-grid,
+.services-grid-large,
+.contact-grid {
+    position: relative;
+    z-index: 2;
+}
+
+/* Add subtle pattern to cards */
+.feature-card,
+.service-card-large,
+.contact-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::after,
+.service-card-large::after,
+.contact-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(219, 137, 137, 0.02) 20px, rgba(219, 137, 137, 0.02) 40px);
+    animation: subtleRotate 60s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes subtleRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ensure card content stays above pattern */
+.feature-card > *,
+.service-card-large > *,
+.contact-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Add animated triangles to footer */
+.footer {
+    background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(60deg, transparent 0%, transparent 49%, rgba(255, 255, 255, 0.05) 50%, transparent 51%, transparent 100%);
+    background-size: 30px 30px;
+    animation: triangleMove 15s linear infinite;
+}
+
+/* Add geometric accent to page heroes */
+.page-hero {
+    background: var(--primary-red);
+    padding: 120px 0 80px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255, 255, 255, 0.05) 50px, rgba(255, 255, 255, 0.05) 100px),
+        repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(0, 0, 0, 0.05) 50px, rgba(0, 0, 0, 0.05) 100px);
+    animation: patternShift 30s linear infinite;
+}
+
+/* Add floating triangles animation */
+@keyframes floatTriangle {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.floating-triangles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid rgba(219, 137, 137, 0.1);
+    animation: floatTriangle 15s linear infinite;
+}
+
+.triangle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    border-bottom-color: rgba(158, 0, 1, 0.1);
+}
+
+.triangle:nth-child(2) {
+    left: 30%;
+    animation-delay: 3s;
+    border-bottom-color: rgba(219, 137, 137, 0.1);
+}
+
+.triangle:nth-child(3) {
+    left: 50%;
+    animation-delay: 6s;
+    border-bottom-color: rgba(131, 8, 8, 0.1);
+}
+
+.triangle:nth-child(4) {
+    left: 70%;
+    animation-delay: 9s;
+    border-bottom-color: rgba(219, 137, 137, 0.1);
+}
+
+.triangle:nth-child(5) {
+    left: 90%;
+    animation-delay: 12s;
+    border-bottom-color: rgba(158, 0, 1, 0.1);
 } 

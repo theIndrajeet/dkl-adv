@@ -229,4 +229,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Dynamic Triangle Generation
+document.addEventListener('DOMContentLoaded', () => {
+    const trianglesContainer = document.querySelector('.floating-triangles');
+    
+    // Generate additional triangles dynamically
+    function createTriangle() {
+        const triangle = document.createElement('div');
+        triangle.className = 'triangle';
+        
+        // Random position
+        triangle.style.left = Math.random() * 100 + '%';
+        
+        // Random size
+        const size = Math.random() * 20 + 10;
+        triangle.style.borderLeftWidth = size + 'px';
+        triangle.style.borderRightWidth = size + 'px';
+        triangle.style.borderBottomWidth = (size * 2) + 'px';
+        
+        // Random color from our palette
+        const colors = [
+            'rgba(219, 137, 137, 0.1)',
+            'rgba(158, 0, 1, 0.1)',
+            'rgba(131, 8, 8, 0.1)',
+            'rgba(219, 137, 137, 0.05)',
+            'rgba(158, 0, 1, 0.05)'
+        ];
+        triangle.style.borderBottomColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Random animation duration
+        triangle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        triangle.style.animationDelay = Math.random() * 5 + 's';
+        
+        trianglesContainer.appendChild(triangle);
+        
+        // Remove triangle after animation completes
+        setTimeout(() => {
+            triangle.remove();
+        }, 20000);
+    }
+    
+    // Create initial batch of triangles
+    if (trianglesContainer) {
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => createTriangle(), i * 1000);
+        }
+        
+        // Continue creating triangles periodically
+        setInterval(createTriangle, 2000);
+    }
+});
+
  
