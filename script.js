@@ -78,23 +78,55 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Reveal on scroll
-const revealOnScroll = () => {
-    const reveals = document.querySelectorAll('.section');
-    const windowHeight = window.innerHeight;
-    
-    reveals.forEach(reveal => {
-        const revealTop = reveal.getBoundingClientRect().top;
-        const revealPoint = 150;
-        
-        if (revealTop < windowHeight - revealPoint) {
-            reveal.classList.add('visible');
-        }
-    });
+// Reveal on scroll with Intersection Observer
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
 };
 
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe all sections and cards
+document.addEventListener('DOMContentLoaded', () => {
+    const elementsToObserve = document.querySelectorAll('.feature-card, .service-card-large, .contact-card, .practice-card');
+    elementsToObserve.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        observer.observe(el);
+    });
+});
+
+// Navbar scroll effect
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    // Add scrolled class for styling
+    if (currentScroll > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    // Hide/show navbar on scroll
+    if (currentScroll > lastScroll && currentScroll > 100) {
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        navbar.style.transform = 'translateY(0)';
+    }
+    
+    lastScroll = currentScroll;
+});
 
 // Menu Toggle Function
 function toggleMenu() {
@@ -117,6 +149,38 @@ document.addEventListener('keydown', (e) => {
             toggleMenu();
         }
     }
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const heroContent = document.querySelector('.hero-content');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    
+    if (heroContent) {
+        heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+        heroContent.style.opacity = 1 - (scrolled * 0.001);
+    }
+    
+    if (scrollIndicator) {
+        scrollIndicator.style.opacity = 1 - (scrolled * 0.01);
+    }
+});
+
+// Add hover effect to cards
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.feature-card, .service-card-large, .contact-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            this.style.setProperty('--mouse-x', `${x}px`);
+            this.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
 });
 
  
