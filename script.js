@@ -128,70 +128,74 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Menu Toggle Function with improved handling
+// Menu Toggle Function - Final Version
+let menuOpen = false;
+
 function toggleMenu() {
     const menuOverlay = document.getElementById('menuOverlay');
     const body = document.body;
-    const isActive = menuOverlay.classList.contains('active');
     
-    if (!isActive) {
+    if (!menuOpen) {
         // Opening menu
         menuOverlay.classList.add('active');
         body.classList.add('menu-open');
-        // Store current scroll position
-        const scrollY = window.scrollY;
-        body.style.top = `-${scrollY}px`;
+        menuOpen = true;
+        
+        // Highlight current page in menu
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const menuLinks = document.querySelectorAll('.menu-items a');
+        menuLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
     } else {
         // Closing menu
         menuOverlay.classList.remove('active');
         body.classList.remove('menu-open');
-        // Restore scroll position
-        const scrollY = parseInt(body.style.top || '0') * -1;
-        body.style.top = '';
-        window.scrollTo(0, scrollY);
-    }
-    
-    // Toggle hamburger menu if it exists
-    const hamburger = document.querySelector('.hamburger-menu');
-    if (hamburger) {
-        hamburger.classList.toggle('active');
+        menuOpen = false;
     }
 }
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    const menuOverlay = document.getElementById('menuOverlay');
-    const menuButton = document.querySelector('.menu-button');
-    const hamburger = document.querySelector('.hamburger-menu');
-    
-    // Check if menu is open and click is outside menu elements
-    if (menuOverlay.classList.contains('active')) {
-        if (!menuOverlay.contains(e.target) && 
-            !menuButton?.contains(e.target) && 
-            !hamburger?.contains(e.target)) {
-            toggleMenu();
-        }
-    }
+// Close menu when clicking a link
+document.querySelectorAll('.menu-items a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Allow the default link behavior but close menu after a short delay
+        setTimeout(() => {
+            if (menuOpen) {
+                toggleMenu();
+            }
+        }, 100);
+    });
 });
 
 // Close menu on escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        const menuOverlay = document.getElementById('menuOverlay');
-        if (menuOverlay.classList.contains('active')) {
-            toggleMenu();
-        }
+    if (e.key === 'Escape' && menuOpen) {
+        toggleMenu();
     }
 });
 
-// Ensure menu doesn't interfere with page load
+// Prevent menu from interfering on page load
 document.addEventListener('DOMContentLoaded', () => {
     const menuOverlay = document.getElementById('menuOverlay');
     if (menuOverlay) {
         menuOverlay.classList.remove('active');
         document.body.classList.remove('menu-open');
+        menuOpen = false;
     }
 });
+
+// Fix for iOS Safari
+document.addEventListener('touchmove', (e) => {
+    if (menuOpen) {
+        e.preventDefault();
+    }
+}, { passive: false });
 
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
