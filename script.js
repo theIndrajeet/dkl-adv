@@ -168,7 +168,7 @@ document.querySelectorAll('.menu-items a').forEach(link => {
         setTimeout(() => {
             if (menuOpen) {
                 toggleMenu();
-            }
+    }
         }, 100);
     });
 });
@@ -182,12 +182,15 @@ document.addEventListener('keydown', (e) => {
 
 // Prevent menu from interfering on page load
 document.addEventListener('DOMContentLoaded', () => {
-    const menuOverlay = document.getElementById('menuOverlay');
+        const menuOverlay = document.getElementById('menuOverlay');
     if (menuOverlay) {
         menuOverlay.classList.remove('active');
         document.body.classList.remove('menu-open');
         menuOpen = false;
     }
+    
+    // Initialize practice areas navigation
+    initPracticeAreas();
 });
 
 // Fix for iOS Safari
@@ -279,5 +282,34 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(createTriangle, 2000);
     }
 });
+
+// Practice Areas Navigation
+function initPracticeAreas() {
+    const navItems = document.querySelectorAll('.practice-nav-item');
+    const contentSections = document.querySelectorAll('.practice-content');
+    
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const practiceId = this.getAttribute('data-practice');
+            
+            // Remove active class from all nav items
+            navItems.forEach(nav => nav.classList.remove('active'));
+            
+            // Remove active class from all content sections
+            contentSections.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked nav item
+            this.classList.add('active');
+            
+            // Show corresponding content section
+            const targetContent = document.getElementById(practiceId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+}
+
+
 
  

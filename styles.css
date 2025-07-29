@@ -1611,52 +1611,260 @@ body.menu-open {
 
 /* Practice Page Specific */
 .practices-page-section {
-    padding: 80px 0;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--bg-color) 0%, #fafafa 100%);
 }
 
-.practices-page-section .practice-card {
-    padding: 50px 40px;
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.practice-card h4 {
+.section-subtitle {
     font-size: 1.1rem;
-    color: var(--primary-red);
-    margin: 20px 0;
-    font-weight: 500;
+    color: var(--gray-medium);
+    line-height: 1.6;
+    margin-top: 1rem;
 }
 
-.practice-services {
-    margin-top: 30px;
-    text-align: left;
-}
-
-.practice-services h5 {
-    font-size: 1rem;
-    color: var(--primary-red);
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.practice-services ul {
-    list-style: none;
-    padding: 0;
-}
-
-.practice-services li {
-    color: var(--gray-dark);
-    font-size: 0.9rem;
-    line-height: 1.8;
-    padding-left: 20px;
+.practices-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(158, 0, 1, 0.08);
+    overflow: hidden;
     position: relative;
-    margin-bottom: 10px;
 }
 
-.practice-services li:before {
-    content: "•";
+.practices-layout::before {
+    content: '';
     position: absolute;
+    top: 0;
     left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-red), var(--accent-pink), var(--primary-red));
+}
+
+.practices-sidebar {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 2rem 0;
+    border-right: 1px solid #e9ecef;
+}
+
+.practice-nav-item {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    position: relative;
+}
+
+.practice-nav-item:hover {
+    background: linear-gradient(135deg, rgba(158, 0, 1, 0.05) 0%, rgba(219, 137, 137, 0.05) 100%);
+    border-left-color: var(--accent-pink);
+}
+
+.practice-nav-item.active {
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+    border-left-color: var(--primary-red);
+    color: white;
+}
+
+.practice-nav-item.active::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid var(--primary-red);
+}
+
+.practice-nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 1rem;
+    color: var(--gray-medium);
+    transition: color 0.3s ease;
+}
+
+.practice-nav-item:hover .practice-nav-icon {
     color: var(--primary-red);
 }
+
+.practice-nav-item.active .practice-nav-icon {
+    color: white;
+}
+
+.practice-nav-item span {
+    font-weight: 500;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--gray-dark);
+    transition: color 0.3s ease;
+}
+
+.practice-nav-item:hover span {
+    color: var(--primary-red);
+}
+
+.practice-nav-item.active span {
+    color: white;
+}
+
+.practices-content {
+    padding: 3rem;
+    min-height: 500px;
+}
+
+.practice-content {
+    display: none;
+    animation: fadeInContent 0.5s ease-in-out;
+}
+
+.practice-content.active {
+    display: block;
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.practice-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    margin-bottom: 1.5rem;
+    font-family: 'DM Serif Display', serif;
+}
+
+.practice-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--gray-medium);
+    margin-bottom: 2.5rem;
+}
+
+.practice-services-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.service-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(158, 0, 1, 0.02) 0%, rgba(219, 137, 137, 0.02) 100%);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-pink);
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    background: linear-gradient(135deg, rgba(158, 0, 1, 0.05) 0%, rgba(219, 137, 137, 0.05) 100%);
+    border-left-color: var(--primary-red);
+    transform: translateX(5px);
+}
+
+.service-bullet {
+    color: var(--primary-red);
+    font-weight: 700;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-top: 0.1rem;
+}
+
+.service-item span:last-child {
+    font-weight: 500;
+    color: var(--gray-dark);
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .practices-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .practices-sidebar {
+        background: white;
+        border-right: none;
+        border-bottom: 1px solid #e9ecef;
+        padding: 1.5rem 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 0.5rem;
+    }
+    
+    .practice-nav-item {
+        padding: 1rem 1.5rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+    
+    .practice-nav-item.active {
+        border-bottom-color: var(--primary-red);
+    }
+    
+    .practice-nav-item.active::after {
+        display: none;
+    }
+    
+    .practices-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .practice-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .practices-sidebar {
+        grid-template-columns: 1fr;
+    }
+    
+    .practice-nav-item {
+        padding: 1rem;
+    }
+    
+    .practice-nav-item span {
+        font-size: 0.9rem;
+    }
+    
+    .practices-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .practice-title {
+        font-size: 1.5rem;
+    }
+    
+    .practice-description {
+        font-size: 1rem;
+    }
+} 
 
 /* CTA Section */
 .cta-section {
