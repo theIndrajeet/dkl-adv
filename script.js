@@ -128,18 +128,51 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Menu Toggle Function
+// Menu Toggle Function with improved handling
 function toggleMenu() {
     const menuOverlay = document.getElementById('menuOverlay');
-    menuOverlay.classList.toggle('active');
+    const body = document.body;
+    const isActive = menuOverlay.classList.contains('active');
     
-    // Prevent body scroll when menu is open
-    if (menuOverlay.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
+    if (!isActive) {
+        // Opening menu
+        menuOverlay.classList.add('active');
+        body.classList.add('menu-open');
+        // Store current scroll position
+        const scrollY = window.scrollY;
+        body.style.top = `-${scrollY}px`;
     } else {
-        document.body.style.overflow = 'auto';
+        // Closing menu
+        menuOverlay.classList.remove('active');
+        body.classList.remove('menu-open');
+        // Restore scroll position
+        const scrollY = parseInt(body.style.top || '0') * -1;
+        body.style.top = '';
+        window.scrollTo(0, scrollY);
+    }
+    
+    // Toggle hamburger menu if it exists
+    const hamburger = document.querySelector('.hamburger-menu');
+    if (hamburger) {
+        hamburger.classList.toggle('active');
     }
 }
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuButton = document.querySelector('.menu-button');
+    const hamburger = document.querySelector('.hamburger-menu');
+    
+    // Check if menu is open and click is outside menu elements
+    if (menuOverlay.classList.contains('active')) {
+        if (!menuOverlay.contains(e.target) && 
+            !menuButton?.contains(e.target) && 
+            !hamburger?.contains(e.target)) {
+            toggleMenu();
+        }
+    }
+});
 
 // Close menu on escape key
 document.addEventListener('keydown', (e) => {
@@ -148,6 +181,15 @@ document.addEventListener('keydown', (e) => {
         if (menuOverlay.classList.contains('active')) {
             toggleMenu();
         }
+    }
+});
+
+// Ensure menu doesn't interfere with page load
+document.addEventListener('DOMContentLoaded', () => {
+    const menuOverlay = document.getElementById('menuOverlay');
+    if (menuOverlay) {
+        menuOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
     }
 });
 
